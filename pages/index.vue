@@ -1,52 +1,46 @@
 <template>
   <section class="section">
-    <div class="columns is-mobile">
-      <card
-        title="Free"
-        icon="github"
-      >
-        Open source on <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
-
-      <card
-        title="Responsive"
-        icon="cellphone-link"
-      >
-        <b class="has-text-grey">
-          Every
-        </b> component is responsive
-      </card>
-
-      <card
-        title="Modern"
-        icon="alert-decagram"
-      >
-        Built with <a href="https://vuejs.org/">
-          Vue.js
-        </a> and <a href="http://bulma.io/">
-          Bulma
-        </a>
-      </card>
-
-      <card
-        title="Lightweight"
-        icon="arrange-bring-to-front"
-      >
-        No other internal dependency
-      </card>
+    <div class="columns">
+      <h1>Boxing Timer</h1>
+    </div>
+    <div class="selection-container">
+      <b-field label="Rounds">
+        <b-numberinput
+          v-model="roundTotal"
+          min="1"
+          controls-position="compact"
+          type="is-dark"
+        ></b-numberinput>
+      </b-field>
+      <b-field label="Work">
+        <b-numberinput
+          v-model="workTIme"
+          min="1"
+          controls-position="compact"
+          type="is-dark"
+        ></b-numberinput>
+      </b-field>
+      <b-field label="Rounds">
+        <b-numberinput
+          v-model="restTime"
+          min="1"
+          controls-position="compact"
+          type="is-dark"
+        ></b-numberinput>
+      </b-field>
     </div>
   </section>
 </template>
 
 <script>
-import Card from '~/components/Card'
-
 export default {
-  name: 'IndexPage',
-  components: {
-    Card
-  }
-}
+  name: "IndexPage",
+  data() {
+    return {
+      roundTotal: this.$store.state.roundTotal,
+      workTIme: this.$store.state.workTime,
+      restTime: this.$store.state.restTime,
+    };
+  },
+};
 </script>
