@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
-    <section class="main-content columns">
-      <div class="container column">
+    <section class="columns is-centered">
+      <div class="column is-half">
         <Nuxt />
       </div>
     </section>
