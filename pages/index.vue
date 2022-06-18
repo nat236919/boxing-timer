@@ -4,7 +4,7 @@
       <h1>Boxing Timer</h1>
     </div>
     <!-- Selection -->
-    <div class="selection-container">
+    <div class="selection-container" v-if="!trainingInProgress">
       <b-field label="Rounds">
         <b-numberinput
           v-model="roundTotal"
@@ -15,7 +15,7 @@
       </b-field>
       <b-field label="Work">
         <b-numberinput
-          v-model="workTIme"
+          v-model="workTime"
           min="1"
           controls-position="compact"
           type="is-dark"
@@ -32,7 +32,12 @@
       <b-button @click="startTraining">Start</b-button>
     </div>
     <!-- Training In-Progress-->
-    <div class="training-container" v-if="trainingInProgress">In-Progress</div>
+    <div class="training-container" v-else>
+      <p>Round {{ roundTotal }}</p>
+      <p>Work {{ workTime }}</p>
+      <p>Rest {{ restTime }}</p>
+      <b-button type="is-danger" @click="stopTraining">Stop</b-button>
+    </div>
   </section>
 </template>
 
@@ -47,7 +52,7 @@ export default {
   data() {
     return {
       roundTotal: this.$store.state.roundTotal,
-      workTIme: this.$store.state.workTime,
+      workTime: this.$store.state.workTime,
       restTime: this.$store.state.restTime,
     };
   },
@@ -55,6 +60,11 @@ export default {
     startTraining() {
       this.$buefy.notification.open("Training started!");
       this.$store.dispatch("startTraining");
+      // TODO: Add logics
+    },
+    stopTraining() {
+      this.$buefy.notification.open("Training stopped!");
+      this.$store.dispatch("stopTraining");
     },
   },
 };
